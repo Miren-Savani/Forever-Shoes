@@ -27,16 +27,19 @@ const ProductItem = ({id, image, name, price}) => {
       </div>
 
       {/* Product Info */}
-      <div className='p-4'>
-        <h3 className='text-sm font-medium text-gray-900 line-clamp-1 group-hover:text-black transition-colors'>
+      <div className='p-3 sm:p-4'>
+        <h3 className='text-sm sm:text-base font-medium text-gray-900 line-clamp-1 group-hover:text-black transition-colors'>
           {name}
         </h3>
         <div className='mt-2 flex items-center justify-between'>
-          <p className='text-lg font-semibold text-black'>
+          <p className='text-base sm:text-lg font-semibold text-black'>
             {currency}{price}
           </p>
-          <button className='px-3 py-1 text-sm text-black bg-gray-100 rounded-full opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300'>
+          <button className='hidden sm:block px-3 py-1 text-sm text-black bg-gray-100 rounded-full opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300'>
             View Details
+          </button>
+          <button className='sm:hidden px-2 py-1 text-xs text-black bg-gray-100 rounded-full'>
+            View
           </button>
         </div>
       </div>

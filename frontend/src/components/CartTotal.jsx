@@ -8,15 +8,15 @@ const CartTotal = () => {
 
 
   return (
-    <div className='w-full border border-gray-250 rounded-xl px-5 py-4'>
-        <div className='text-2xl'>
+    <div className='w-full border border-gray-250 rounded-xl px-3 sm:px-5 py-3 sm:py-4'>
+        <div className='text-xl sm:text-2xl'>
             <Title text1={'CART'} text2={'TOTALS'} />
         </div>
 
-        <div className='flex flex-col gap-2 mt-2 text-sm'>
+        <div className='flex flex-col gap-2 mt-2 text-xs sm:text-sm'>
             <div className='flex justify-between'>
                 <p>Subtotal</p>
-                <p>{currency} {getCartAmount()}.00</p>
+                <p className='font-medium'>{currency} {getCartAmount()}.00</p>
             </div>
             <hr />
             {appliedCoupon && appliedCoupon.subtotal === getCartAmount() ? (
@@ -54,16 +54,27 @@ const CartTotal = () => {
 
         </div>
 
-        <div className='mt-4 flex items-center gap-2'>
+        <div className='mt-4 flex flex-col sm:flex-row items-center gap-2'>
             {appliedCoupon && appliedCoupon.subtotal === getCartAmount() ? (
-                <>
-                <span className='text-green-600 text-sm'>Applied: {appliedCoupon.code}</span>
-                <button type='button' onClick={removeCoupon} className='text-red-600 text-sm underline'>Remove</button>
-                </>
+                <div className='flex items-center gap-2 w-full justify-center sm:justify-start'>
+                    <span className='text-green-600 text-xs sm:text-sm'>Applied: {appliedCoupon.code}</span>
+                    <button type='button' onClick={removeCoupon} className='text-red-600 text-xs sm:text-sm underline'>Remove</button>
+                </div>
             ) : (
                 <>
-                <input value={code} onChange={(e)=>setCode(e.target.value)} className='border border-gray-300 rounded py-1 px-2 text-sm flex-1' placeholder='Coupon code' />
-                <button type='button' onClick={()=>applyCoupon(code)} className='bg-black text-white text-sm px-3 py-1 rounded'>Apply</button>
+                    <input 
+                        value={code} 
+                        onChange={(e)=>setCode(e.target.value)} 
+                        className='w-full sm:flex-1 border border-gray-300 rounded py-1.5 px-2 text-xs sm:text-sm' 
+                        placeholder='Enter coupon code' 
+                    />
+                    <button 
+                        type='button' 
+                        onClick={()=>applyCoupon(code)} 
+                        className='w-full sm:w-auto bg-black text-white text-xs sm:text-sm px-3 py-1.5 rounded hover:bg-gray-800 transition-colors'
+                    >
+                        Apply Coupon
+                    </button>
                 </>
             )}
         </div>
